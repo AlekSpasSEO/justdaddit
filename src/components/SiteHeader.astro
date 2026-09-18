@@ -1,0 +1,26 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href={base} aria-label="JustDaddit home">
+      <span>JUST</span><strong>DADDIT</strong><i aria-hidden="true"></i>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu</button>
+    <nav id="main-navigation" class="main-nav" aria-label="Main navigation">
+      <a href={`${base}rc-cars/`}>RC cars</a>
+      <a href={`${base}compare/traxxas-slash-4x4-vxl-vs-arrma-senton-223s-blx/`}>Comparisons</a>
+      <a href={`${base}how-we-research/`}>How we research</a>
+      <a href={`${base}about/`}>About</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.querySelector<HTMLElement>('.main-nav');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('is-open', !open);
+  });
+</script>

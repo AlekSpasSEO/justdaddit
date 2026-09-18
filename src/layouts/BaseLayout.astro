@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const {
+  title,
+  description,
+  canonicalPath = '',
+  image,
+  schema,
+  article = false,
+} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const siteName = 'JustDaddit';
+const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const canonical = new URL(canonicalPath.replace(/^\//, ''), 'https://justdaddit.com/').toString();
+const shareImage = image ? new URL(image.replace(/^\//, ''), Astro.site ?? Astro.url).toString() : undefined;
+---
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {shareImage && <meta property="og:image" content={shareImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#ff5a36" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    {schema && <script is:inline type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <SiteHeader />
+    <slot />
+    <SiteFooter />
+    <script is:inline>
+      document.querySelectorAll('[data-current-year]').forEach((node) => node.textContent = new Date().getFullYear());
+    </script>
+  </body>
+</html>

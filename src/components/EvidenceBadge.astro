@@ -1,0 +1,7 @@
+---
+const { type = 'Research Review', text = 'No hands-on claim' } = Astro.props;
+---
+<div class="evidence-badge" aria-label={`${type}: ${text}`}>
+  <span aria-hidden="true">R</span>
+  <div><strong>{type}</strong><small>{text}</small></div>
+</div>

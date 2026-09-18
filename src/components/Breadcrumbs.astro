@@ -1,0 +1,8 @@
+---
+const { items } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href={base}>Home</a>
+  {items.map((item, index) => <><span>/</span>{item.href ? <a href={`${base}${item.href.replace(/^\//, '')}`}>{item.label}</a> : <span aria-current="page">{item.label}</span>}</>)}
+</nav>

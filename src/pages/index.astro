@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvidenceBadge from '../components/EvidenceBadge.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', name: 'JustDaddit', url: 'https://justdaddit.com/', description: 'Research-backed gear for family adventures, projects, travel, and outdoor play.' },
+    { '@type': 'Organization', name: 'JustDaddit', url: 'https://justdaddit.com/', founder: { '@type': 'Person', name: 'Aleksandar Spasevski' } },
+  ],
+};
+---
+<BaseLayout title="Better gear for family adventures" description="Research-backed reviews for RC cars, ride-ons, backyard play, family camping, and road-trip cargo." canonicalPath="/" schema={schema}>
+  <main id="main-content">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">Research-backed family gear</p>
+          <h1>Buy the gear.<br /><span>Keep the weekend.</span></h1>
+          <p class="hero-lede">We compare the fun part, the annoying part, and the real first-weekend cost. No imaginary testing. No 47 nearly identical picks. Just clearer family decisions.</p>
+          <div class="hero-actions">
+            <a class="button" href={`${base}rc-cars/`}>Start with RC cars</a>
+            <a class="text-link" href={`${base}how-we-research/`}>See how the research works</a>
+          </div>
+        </div>
+        <aside class="notebook" aria-label="The JustDaddit buying check">
+          <header><strong>The dad check</strong><span>Issue 001</span></header>
+          <ol>
+            <li><div><strong>Can they use it?</strong><br /><small>Age labels are not the whole answer.</small></div></li>
+            <li><div><strong>What else must we buy?</strong><br /><small>Battery, charger, tools, storage, sanity.</small></div></li>
+            <li><div><strong>What happens when it breaks?</strong><br /><small>Parts and repairability matter.</small></div></li>
+            <li><div><strong>Will we use it twice?</strong><br /><small>The brutally honest final question.</small></div></li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="shell"><span>US-first buying guidance</span><span>Real starting costs</span><span>Visible evidence labels</span><span>Recall checks</span><span>Clear skip advice</span></div>
+    </div>
+
+    <section class="section" aria-labelledby="activities-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p>01 / Pick the plan</p>
+          <div class="heading-copy"><h2 id="activities-title">What are you trying to do together?</h2><p>JustDaddit is organized around the family plan, not around retailer departments. One activity, one useful starting point.</p></div>
+        </div>
+        <div class="activity-grid">
+          <a class="activity-card" href={`${base}rc-cars/`}><span class="number">01</span><div><h3>Build & drive</h3><p>Hobby-grade RC cars that can be repaired, upgraded, and shared.</p></div></a>
+          <a class="activity-card" href="#" aria-disabled="true"><span class="number">02</span><div><h3>Ride & drift</h3><p>Go-karts and ride-ons, planned for the next launch batch.</p></div></a>
+          <a class="activity-card" href="#" aria-disabled="true"><span class="number">03</span><div><h3>Own the yard</h3><p>Trampolines and play systems, without ignoring installation.</p></div></a>
+          <a class="activity-card" href="#" aria-disabled="true"><span class="number">04</span><div><h3>Sleep outside</h3><p>Family tents judged by realistic capacity and setup effort.</p></div></a>
+          <a class="activity-card" href="#" aria-disabled="true"><span class="number">05</span><div><h3>Pack the car</h3><p>Roof boxes matched to vehicles, luggage, and garage clearance.</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section decision-panel" aria-labelledby="finder-title">
+      <div class="shell finder-grid">
+        <div>
+          <p class="eyebrow">The useful shortcut</p>
+          <h2 id="finder-title">Start with the family. Then choose the machine.</h2>
+          <p>Speed is a lousy first filter for a shared RC car. Space, control, repair appetite, and the age of the least experienced driver tell us more.</p>
+        </div>
+        <form class="finder" id="quick-finder">
+          <fieldset><legend>Where will you drive?</legend><div class="choice-row"><label><input type="radio" name="space" value="yard" checked /><span>Yard / driveway</span></label><label><input type="radio" name="space" value="field" /><span>Open field</span></label><label><input type="radio" name="space" value="trail" /><span>Trail / rocks</span></label></div></fieldset>
+          <fieldset><legend>What matters more?</legend><div class="choice-row"><label><input type="radio" name="goal" value="shared" checked /><span>Easy to share</span></label><label><input type="radio" name="goal" value="speed" /><span>Speed</span></label><label><input type="radio" name="goal" value="build" /><span>Repair & upgrade</span></label></div></fieldset>
+          <div class="finder-result" aria-live="polite"><strong id="finder-title-result">Start with a controllable 4WD short-course truck.</strong><p id="finder-copy">The ARRMA Senton 223S gives a new driver a calmer 2S starting point. The Traxxas Slash wins when the parts ecosystem matters most.</p></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="first-review-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p>02 / First field file</p>
+          <div class="heading-copy"><h2 id="first-review-title">One product, properly examined.</h2><p>This prototype starts with a research review and its closest buying decision. The evidence label is visible because the difference between researched and tested matters.</p></div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card primary">
+            <div>
+              <EvidenceBadge />
+              <h3>Traxxas Slash 4X4 VXL</h3>
+              <p>A seriously fast, highly repairable truck with a brilliant parts ecosystem and a misleadingly incomplete box price.</p>
+              <ul><li>Best for: families ready for hobby-grade ownership</li><li>Skip if: the least experienced driver cannot respect serious speed</li><li>Dad math: truck plus battery and charger</li></ul>
+              <a class="button" href={`${base}rc-cars/traxxas-slash-4x4-vxl/`}>Read the full review</a>
+            </div>
+            <div class="truck-sketch" aria-label="Graphic illustration of a short-course RC truck"><span class="wheel one"></span><span class="wheel two"></span></div>
+          </article>
+          <article class="feature-card">
+            <span class="tag">Head-to-head</span>
+            <h3>Slash 4X4 VXL vs Senton 223S BLX</h3>
+            <p>The Slash has the deeper support network. The Senton has the friendlier learning path. The winner depends on who gets the transmitter first.</p>
+            <a class="text-link" href={`${base}compare/traxxas-slash-4x4-vxl-vs-arrma-senton-223s-blx/`}>Compare them properly</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="standard-title">
+      <div class="shell finder-grid">
+        <div><p class="eyebrow">What the label means</p><h2 id="standard-title">Research is useful. Pretending it was testing is not.</h2></div>
+        <div><p>Our first reviews combine exact manufacturer documentation, manuals, parts diagrams, warranty terms, current retail data, independent evaluations, owner-report patterns, and recall checks. They do not say “we tested” because we did not.</p><p>When we buy, borrow, or receive a product and run the full protocol, the label changes. The old research record stays visible.</p><a class="button alt" href={`${base}how-we-research/`}>Read the complete standard</a></div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#quick-finder');
+    const title = document.querySelector('#finder-title-result');
+    const copy = document.querySelector('#finder-copy');
+    const recommendations: Record<string, [string, string]> = {
+      'yard-shared': ['Start with a controllable 4WD short-course truck.', 'The ARRMA Senton 223S gives a new driver a calmer 2S starting point. The Traxxas Slash wins when the parts ecosystem matters most.'],
+      'yard-speed': ['The Slash is faster than most family yards deserve.', 'Use training mode, create a driving boundary, and budget for a 2S battery before chasing the 3S headline.'],
+      'yard-build': ['Choose the platform with the easiest local parts.', 'Traxxas has the cleaner support argument in many US hobby shops. Verify your local inventory before buying.'],
+      'field-shared': ['The Senton 223S is the easier handoff.', 'Start on 2S and use transmitter limiting. Open space helps, but distance makes judgment harder.'],
+      'field-speed': ['This is where the Slash VXL makes more sense.', 'A genuinely open area lets the truck stretch out. You still need distance from people, pets, cars, and curbs.'],
+      'field-build': ['Both work. Local parts break the tie.', 'Choose the brand your nearest hobby shop actually stocks, not the one with the louder speed claim.'],
+      'trail-shared': ['Wrong category. Look at a crawler.', 'Short-course trucks are built for speed and bashing. A TRX-4 Sport or compact crawler better fits technical trails.'],
+      'trail-speed': ['A fast short-course truck is a bad trail tool.', 'If the route is rough and narrow, speed becomes frustration. Choose crawling control instead.'],
+      'trail-build': ['Start with a repairable crawler platform.', 'The build-together value is strong, but the Slash and Senton are not the right first two candidates.'],
+    };
+    const update = () => {
+      const space = form?.querySelector<HTMLInputElement>('input[name="space"]:checked')?.value ?? 'yard';
+      const goal = form?.querySelector<HTMLInputElement>('input[name="goal"]:checked')?.value ?? 'shared';
+      const result = recommendations[`${space}-${goal}`];
+      if (title && copy && result) { title.textContent = result[0]; copy.textContent = result[1]; }
+    };
+    form?.addEventListener('change', update);
+  </script>
+</BaseLayout>

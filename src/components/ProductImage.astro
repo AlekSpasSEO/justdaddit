@@ -1,0 +1,7 @@
+---
+const { src, alt, credit, source, badge = 'Retailer image', loading = 'lazy' } = Astro.props;
+---
+<figure class="product-image">
+  <div class="image-stage"><span>{badge}</span><img src={src} alt={alt} width="900" height="600" loading={loading} decoding="async" /></div>
+  <figcaption>Image: <a href={source} target="_blank" rel="noopener">{credit}</a>. Used as a sourced product reference for this prototype.</figcaption>
+</figure>

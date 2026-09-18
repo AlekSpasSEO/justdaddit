@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AuthorCard from '../../components/AuthorCard.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const products = [
+  ['01', 'Traxxas Slash 4X4 VXL', 'The support-network pick', 'Families ready for speed, maintenance, and a long upgrade path.', 'A young first driver will use it without strict speed limiting.', 'rc-cars/traxxas-slash-4x4-vxl/'],
+  ['02', 'ARRMA Senton 223S BLX', 'The learning-curve pick', 'A shared family truck that can start on 2S and grow into 3S.', 'Your priority is the widest walk-in hobby-shop parts network.', 'compare/traxxas-slash-4x4-vxl-vs-arrma-senton-223s-blx/'],
+  ['03', 'Traxxas Mini Maxx', 'The smaller-space basher', 'You want stout construction in a format that is easier to transport.', 'You expect small size to mean harmless speed. It does not.', '#'],
+  ['04', 'ARRMA Typhon GROM 223S', 'The compact-value pick', 'Driveways, smaller lots, and a lower entry price matter.', 'Grass is your main driving area.', '#'],
+  ['05', 'Axial SCX24 Jeep Wrangler JLU', 'The indoor-outdoor crawler', 'You value precision, obstacles, and build-together upgrades over speed.', 'You want jumps, roost, and open-field speed.', '#'],
+  ['06', 'Redcat Ascent-18', 'The value crawler', 'You want a capable small crawler without paying for the biggest ecosystem.', 'Easy local parts pickup is non-negotiable.', '#'],
+];
+const schema = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: 'RC Cars for Parents and Kids', url: 'https://justdaddit.com/rc-cars/',
+  description: 'Choose a repairable family RC car by space, speed, battery system, skill, and parts support.',
+  author: { '@type': 'Person', name: 'Aleksandar Spasevski' },
+};
+---
+<BaseLayout title="RC Cars for Parents and Kids" description="A practical guide to hobby-grade family RC cars, with filters for space, control, speed, batteries, repairability, and real starting cost." canonicalPath="/rc-cars/" schema={schema} article>
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="shell">
+        <Breadcrumbs items={[{ label: 'RC cars' }]} />
+        <div class="page-hero-grid">
+          <div><p class="eyebrow">Family gear hub 01</p><h1>RC cars for parents and kids</h1><p class="page-lede">The right first hobby-grade RC car is fast enough to stay interesting, slow enough to learn, and repairable enough to survive the first enthusiastic curb.</p></div>
+          <div><p><strong>The blunt version:</strong> do not start by sorting from fastest to slowest. Start with where you can drive, who will hold the transmitter, and whether you are willing to repair it.</p></div>
+        </div>
+
+        <form class="hub-selector" id="rc-selector">
+          <div class="hub-selector-grid">
+            <label><span>Driver stage</span><select name="stage"><option value="new">New to hobby-grade</option><option value="shared">Parent and child sharing</option><option value="experienced">Experienced driver</option></select></label>
+            <label><span>Main terrain</span><select name="terrain"><option value="mixed">Driveway and short grass</option><option value="open">Open dirt or field</option><option value="crawl">Rocks and obstacles</option></select></label>
+            <label><span>Starting budget</span><select name="budget"><option value="mid">$350 to $650 all-in</option><option value="low">Under $350 all-in</option><option value="high">$650+ all-in</option></select></label>
+          </div>
+          <p class="selector-answer" aria-live="polite"><strong id="rc-answer-title">Begin with the ARRMA Senton 223S BLX on 2S.</strong> <span id="rc-answer-copy">It has a usable progression path before you unlock the full 3S performance. Compare local parts support with Traxxas before paying.</span></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading"><p>01 / The shortlist</p><div class="heading-copy"><h2>Six credible starting points</h2><p>Only the first two have complete prototype coverage today. The remaining pages are mapped, not disguised as finished reviews.</p></div></div>
+        <div class="product-list">
+          {products.map(([rank, name, label, best, skip, href]) => <article class="product-row"><span class="product-rank">{rank}</span><div><p class="eyebrow">{label}</p><h3>{name}</h3><p>{best}</p>{href !== '#' && <a class="text-link" href={`${base}${href}`}>Read the current page</a>}</div><div class="fit"><strong>Best for</strong>{best}<br /><br /><strong>Skip if</strong>{skip}</div></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section decision-panel">
+      <div class="shell finder-grid">
+        <div><p class="eyebrow">The dad math</p><h2>The box price is not the starting price.</h2><p>An RTR label usually means the truck is assembled. It does not always mean the battery and charger are included.</p></div>
+        <div>
+          <div class="comparison-grid">
+            <article class="comparison-point"><h3>Truck</h3><p>The vehicle, transmitter, electronics, and basic tools. Confirm the exact model number and color variant.</p></article>
+            <article class="comparison-point"><h3>Battery</h3><p>2S is the smarter family starting point for many fast 1/10 trucks. Connector ecosystems matter.</p></article>
+            <article class="comparison-point"><h3>Charger</h3><p>Buy a reputable balance charger that matches the battery chemistry and connector. A charging bag is cheap risk control.</p></article>
+            <article class="comparison-point"><h3>First repairs</h3><p>A basic hex-driver set, common suspension parts, body clips where applicable, and realistic expectations.</p></article>
+          </div>
+          <p class="affiliate-note">Reference prices change. JustDaddit dates every price and separates the truck price from the real first-weekend setup.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell article-shell" style="padding:0;display:block;max-width:980px">
+        <article class="article-content">
+          <section><p class="eyebrow">02 / Start with control</p><h2>Headline speed is mostly a warning label</h2><p class="lead">A 50 or 60 mph claim tells you what the power system may do under a favorable setup. It does not tell you where your child can safely drive or how manageable the truck feels at ten yards.</p><p>A short-course truck can cross a driveway faster than a new driver can process a correction. For a shared family vehicle, throttle limiting, a 2S starting battery, stability assistance, and an open driving boundary are more valuable than another ten miles per hour.</p><p>The useful question is not “how fast?” It is “how slowly can a new driver operate it without the truck becoming jerky, dull, or difficult?” That is why the Senton 223S enters this guide so strongly. Its stated 2S-to-3S progression is easy to understand. Traxxas counters with training modes, stability management, and a huge knowledge base.</p></section>
+          <section><p class="eyebrow">03 / Choose the format</p><h2>Basher, short-course truck, or crawler?</h2><h3>Short-course trucks</h3><p>Models such as the Slash and Senton keep the wheels tucked under a broad body. They feel planted, look like real race trucks, and handle mixed dirt, pavement, and trimmed grass. The body can trap debris, and hard landings still find weak points, but this is the strongest all-round family format.</p><h3>Monster-style bashers</h3><p>Larger tires and more clearance help on rough lawns and loose ground. They also raise the center of gravity and can encourage an endless cycle of jumps. Choose one when terrain clearance matters more than scale appearance.</p><h3>Crawlers</h3><p>Crawlers turn small spaces into technical courses. They are slower, easier to share, and often better for a parent-child build project. Do not buy one for a child whose entire mental picture of RC is speed and jumps. It will be the wrong kind of good.</p></section>
+          <section><p class="eyebrow">04 / Size and space</p><h2>1/10 scale is bigger in real life</h2><p>A 1/10 short-course truck is roughly 22 inches long and around a foot wide. Add a transmitter, charger, several batteries, tools, spares, and a cleaning brush. You are not storing one toy. You are storing a small hobby system.</p><p>Smaller vehicles are easier to carry and use, but they do not automatically work well on grass. Tire diameter, clearance, motor heat, and terrain drag matter. A compact 1/18 truck can be brilliant on packed dirt and frustrating in an ordinary lawn.</p><div class="callout"><strong>The storage test</strong><p>Before buying, identify the shelf, charging location, and dirty-truck landing area. If all three answers are “somewhere in the house,” the hobby will create friction before it creates a routine.</p></div></section>
+          <section><p class="eyebrow">05 / Repairability</p><h2>Breaking is not failure. Unavailable parts are.</h2><p>Hobby-grade RC ownership assumes wear, impacts, bent links, stripped gears, tired bearings, torn bodies, and occasional bad judgment. A broken part is tolerable when you can identify it in an exploded diagram and replace it without buying another truck.</p><p>Traxxas has the clearest US parts-availability argument. ARRMA has strong distributor and online support through Horizon Hobby. The best national ecosystem can still lose to the brand stocked by the competent shop fifteen minutes from your house.</p><p>Before choosing, search the exact local inventory for suspension arms, driveshafts, hubs, spur gears, body parts, and tires. That five-minute check is more useful than another review video.</p></section>
+          <section><p class="eyebrow">06 / Battery reality</p><h2>LiPo power needs a family rule, not fear</h2><p>Lithium polymer batteries deliver the performance that makes modern hobby RC impressive. They require correct charging, storage, inspection, and adult control. Use a compatible balance charger, charge on a nonflammable base in an attended area, and follow the manufacturer’s instructions.</p><p>Do not treat the connector as an afterthought. Traxxas and Spektrum ecosystems can influence the battery, charger, and future vehicle choices. Adapters add another connection point and can complicate an otherwise simple family setup.</p><div class="callout warning"><strong>Parent responsibility</strong><p>A fast hobby-grade RC vehicle and its battery system are not set-and-forget toys. The parent owns charging, inspection, driving boundaries, and the decision to increase performance.</p></div></section>
+          <section><p class="eyebrow">07 / Method</p><h2>How this hub was assembled</h2><p>The first shortlist prioritizes active US products with official documentation, identifiable model generations, replacement-parts support, enough independent evidence to examine the trade-offs, and a useful role within a family buying decision.</p><p>JustDaddit has not driven these products. The current pages are research reviews. Full recommendations will be revisited when exact-product testing, structured owner interviews, or long-term ownership data becomes available.</p><AuthorCard /></section>
+          <section><p class="eyebrow">FAQ</p><h2>Questions parents ask before the first RC car</h2><div class="faq-list"><article class="faq-item"><h3>What age is right for a fast hobby-grade RC car?</h3><p>There is no reliable universal age. Coordination, judgment, willingness to follow a boundary, and the available driving space matter more. A parent should control battery handling and supervise high-speed use.</p></article><article class="faq-item"><h3>Should I start with 2S or 3S?</h3><p>For a shared 1/10 family truck, 2S is usually the more sensible start. It reduces the speed and heat while the driver learns control. Move to 3S only when the driving space and skill justify it.</p></article><article class="faq-item"><h3>Is an RTR truck ready to use?</h3><p>Not always. RTR generally means assembled with electronics and transmitter. Many premium models still need a battery and charger. Read the “needed to complete” list for the exact model.</p></article><article class="faq-item"><h3>Can a small RC car drive on grass?</h3><p>Short, dry grass may be manageable for some models. Thick or wet grass creates drag and heat, especially for small-scale vehicles. Packed dirt or pavement is usually a better match.</p></article><article class="faq-item"><h3>Which brand is easiest to repair?</h3><p>Traxxas usually has the broadest US walk-in parts network. ARRMA has strong online and dealer support. The honest answer depends on what your nearest good hobby shop carries.</p></article><article class="faq-item"><h3>How much should I budget beyond the truck?</h3><p>Budget for at least one suitable battery, a quality charger, a charging bag, and proper hex tools. Additional batteries and common spares come later. The exact total depends heavily on the power ecosystem.</p></article></div></section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#rc-selector');
+    const title = document.querySelector('#rc-answer-title');
+    const copy = document.querySelector('#rc-answer-copy');
+    const choose = () => {
+      const stage = form?.querySelector<HTMLSelectElement>('[name="stage"]')?.value;
+      const terrain = form?.querySelector<HTMLSelectElement>('[name="terrain"]')?.value;
+      const budget = form?.querySelector<HTMLSelectElement>('[name="budget"]')?.value;
+      let result = ['Begin with the ARRMA Senton 223S BLX on 2S.', 'It has a usable progression path before you unlock the full 3S performance. Compare local parts support with Traxxas before paying.'];
+      if (terrain === 'crawl') result = ['Choose a crawler, not a short-course truck.', 'The Axial SCX24 and Redcat Ascent-18 make smaller spaces useful and turn driving into a build-together hobby.'];
+      else if (budget === 'low') result = ['Look at a compact GROM or small crawler.', 'A complete 1/10 brushless setup can exceed this budget once battery and charger are included.'];
+      else if (stage === 'experienced' && terrain === 'open') result = ['The Traxxas Slash 4X4 VXL earns the first look.', 'Its speed, parts network, and upgrade depth make more sense once basic control is already there.'];
+      else if (budget === 'high') result = ['Buy support and batteries before extra speed.', 'Use the budget for a strong charger, two matched packs, proper tools, and the platform supported locally.'];
+      if (title && copy) { title.textContent = result[0]; copy.textContent = result[1]; }
+    };
+    form?.addEventListener('change', choose);
+  </script>
+</BaseLayout>

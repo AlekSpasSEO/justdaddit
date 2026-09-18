@@ -1,0 +1,8 @@
+---
+const { score, label = 'Overall score' } = Astro.props;
+const percent = Math.max(0, Math.min(100, Number(score) * 20));
+---
+<div class="score-ring" style={`--score:${percent}%`} aria-label={`${label}: ${score} out of 5`}>
+  <div><strong>{score}</strong><span>/ 5</span></div>
+  <small>{label}</small>
+</div>
